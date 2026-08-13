@@ -1,0 +1,24 @@
+{
+  "name": "Andey’s Beachside Babysitting & Swim",
+  "short_name": "Andey’s Beachside",
+  "description": "Private swim lessons and beachside babysitting along 30A and South Walton.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#dff3f6",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

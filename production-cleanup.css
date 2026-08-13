@@ -1,0 +1,25 @@
+/* Andey’s Beachside — Production Cleanup v5.5 */
+.form-privacy-note{
+  margin:2px 0 0;
+  font-size:.75rem;
+  line-height:1.5;
+  color:var(--muted);
+}
+.form-privacy-note a{
+  color:var(--blue);
+  font-weight:800;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+:focus-visible{
+  outline:3px solid rgba(46,120,144,.42);
+  outline-offset:3px;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto !important}
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+}
