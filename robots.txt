@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://YOUR-DOMAIN.com/sitemap.xml
+
+Disallow: /admin.html
+Disallow: /manage.html
+
+Sitemap: https://andeysbeachside.com/sitemap.xml
