@@ -1,0 +1,98 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Andey Admin</title><link rel="stylesheet" href="styles.css"></head><body><div class="topbar">Andey’s Beachside • Admin</div><div class="demo-banner" id="modeBanner"></div><header><div class="container nav"><a class="brand" href="index.html">Andey’s Beachside<span>Admin dashboard</span></a><nav><a href="index.html">Customer Site</a><a href="manage.html">Manage Booking</a></nav></div></header><main><section class="admin-hero"><div class="container"><div id="loginPanel" class="panel"><div class="eyebrow">Secure admin</div><h2>Andey Dashboard</h2><p id="loginHelp" class="muted"></p><div id="liveLogin" class="booking-grid"><label>Email<input id="adminEmail" type="email"></label><label>Password<input id="adminPassword" type="password"></label></div><div class="actions"><button class="btn" onclick="login()">Open Dashboard</button><button class="btn light" id="resetBtn" onclick="resetDemo()">Reset Demo</button></div></div><div id="dashboard" style="display:none"><div class="eyebrow">Today at a glance</div><h2>Bookings & availability</h2><div class="admin-grid"><div class="metric"><span>Requested</span><strong id="mRequested">0</strong></div><div class="metric"><span>Confirmed</span><strong id="mConfirmed">0</strong></div><div class="metric"><span>Upcoming</span><strong id="mUpcoming">0</strong></div><div class="metric"><span>Paid / deposit</span><strong id="mPaid">0</strong></div></div></div></div></section><section id="bookings" class="dashSection" style="display:none"><div class="container"><div class="toolbar"><div><label>Date<input id="filterDate" type="date" onchange="render()"></label></div><div><label>Status<select id="filterStatus" onchange="render()"><option>All</option><option>Requested</option><option>Confirmed</option><option>Cancelled</option></select></label></div><button class="btn light" onclick="clearFilters()">Clear</button></div><div class="table-wrap"><table><thead><tr><th>Date / Time</th><th>Service</th><th>Family</th><th>Contact</th><th>Payment</th><th>Status</th><th>Actions</th></tr></thead><tbody id="bookingRows"></tbody></table><div class="empty" id="bookingEmpty" style="display:none">No bookings match.</div></div></div></section><section id="blocks" class="sand dashSection" style="display:none"><div class="container"><div class="section-head"><div class="eyebrow">Protect your schedule</div><h2>Block Unavailable Time</h2></div><div class="panel"><div class="block-form"><label>Date<input id="blockDate" type="date"></label><label>Start<select id="blockStart"></select></label><label>End<select id="blockEnd"></select></label><label>Reason<input id="blockNote" placeholder="Personal, travel, etc."></label><button class="btn" onclick="addBlock()">Block Time</button></div></div><div class="table-wrap" style="margin-top:18px"><table><thead><tr><th>Date</th><th>Time</th><th>Reason</th><th></th></tr></thead><tbody id="blockRows"></tbody></table></div></div></section></main><footer><div class="container">Andey’s Beachside Babysitting & Swim</div></footer><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+let adminRescheduleCurrent=null;
+let adminRescheduleStart=null;
+let adminRescheduleTime=null;
+
+function bookingById(id){
+  return (window.__adminBookings||[]).find(b=>String(b.id)===String(id));
+}
+async function openAdminReschedule(id){
+  const b=bookingById(id);
+  if(!b){alert('Booking not found in the current admin list.');return}
+  adminRescheduleCurrent=b;adminRescheduleStart=null;adminRescheduleTime=null;
+  document.getElementById('adminRescheduleSummary').textContent=`${b.parent_name||b.parent} • ${b.service} • ${b.booking_date||b.date}`;
+  const d=document.getElementById('adminNewDate');
+  d.min=new Date().toISOString().slice(0,10);
+  d.value=b.booking_date||b.date||'';
+  const dur=document.getElementById('adminNewDuration');
+  const opts=AndeyData.serviceDurationOptions(b.service);
+  dur.innerHTML=opts.map(x=>`<option>${x}</option>`).join('');
+  dur.value=b.duration_label||b.duration||opts[0]||'';
+  document.getElementById('adminRescheduleModal').style.display='flex';
+  d.onchange=renderAdminRescheduleTimes;dur.onchange=renderAdminRescheduleTimes;
+  document.getElementById('adminSaveReschedule').onclick=saveAdminReschedule;
+  await renderAdminRescheduleTimes();
+}
+function closeAdminReschedule(){
+  document.getElementById('adminRescheduleModal').style.display='none';
+}
+async function renderAdminRescheduleTimes(){
+  const grid=document.getElementById('adminTimeGrid');
+  grid.innerHTML='<span class="muted">Checking…</span>';
+  adminRescheduleStart=null;adminRescheduleTime=null;
+  const date=document.getElementById('adminNewDate').value;
+  const duration=document.getElementById('adminNewDuration').value;
+  if(!date||!duration){grid.innerHTML='<span class="muted">Choose a date and duration.</span>';return}
+  try{
+    const busy=await AndeyData.listBusy(date);
+    const dm=AndeyData.durationMinutes(duration);
+    const buffer=ANDEY_CONFIG.travelBufferMinutes||30;
+    const currentId=adminRescheduleCurrent?.id;
+    grid.innerHTML=AndeyData.slots.map(t=>{
+      const st=AndeyData.mins(t),serviceEnd=st+dm,occupiedEnd=serviceEnd+buffer;
+      const bad=serviceEnd>20*60||occupiedEnd>21*60||busy.some(r=>AndeyData.rangesOverlap(st,occupiedEnd,r.start_minute,r.end_minute));
+      return `<button type="button" class="time-slot ${bad?'unavailable':''}" ${bad?'disabled':''} data-time="${t}" data-start="${st}">${t}</button>`
+    }).join('');
+    grid.querySelectorAll('.time-slot:not(.unavailable)').forEach(btn=>btn.onclick=()=>{
+      grid.querySelectorAll('.time-slot').forEach(x=>x.classList.remove('selected'));
+      btn.classList.add('selected');adminRescheduleStart=+btn.dataset.start;adminRescheduleTime=btn.dataset.time;
+    });
+  }catch(e){grid.innerHTML=`<span class="muted">${e.message}</span>`}
+}
+async function saveAdminReschedule(){
+  if(!adminRescheduleCurrent||adminRescheduleStart===null){alert('Choose an available start time.');return}
+  const btn=document.getElementById('adminSaveReschedule');btn.disabled=true;btn.textContent='Saving…';
+  try{
+    const updated=await AndeyData.adminRescheduleBooking(
+      adminRescheduleCurrent.id,
+      document.getElementById('adminNewDate').value,
+      adminRescheduleStart,
+      adminRescheduleTime,
+      document.getElementById('adminNewDuration').value
+    );
+    try{await AndeyData.sendBookingNotification('rescheduled',updated)}catch(e){console.error('Reschedule email error',e)}
+    closeAdminReschedule();
+    await refresh();
+    alert('Booking rescheduled and customer notification sent.');
+  }catch(e){alert(e.message)}
+  finally{btn.disabled=false;btn.textContent='Save New Time & Email Customer'}
+}
+
+</script><script src="config.js"></script><script src="data.js"></script><script>
+let bookings=[],blocks=[];const $=id=>document.getElementById(id);$('modeBanner').innerHTML=ANDEY_CONFIG.mode==='demo'?`🧪 <b>Phase ${ANDEY_CONFIG.phase} Demo Admin</b> — no password required.`:'🔒 <b>Live Admin</b> — use Supabase Auth.';$('loginHelp').textContent=ANDEY_CONFIG.mode==='demo'?'Click Open Dashboard. Customer bookings appear here immediately.':'Sign in with the admin account you created in Supabase.';if(ANDEY_CONFIG.mode==='demo')$('liveLogin').style.display='none';else $('resetBtn').style.display='none';for(const id of ['blockStart','blockEnd'])for(let h=8;h<=20;h++){const o=document.createElement('option');o.value=h*60;o.textContent=AndeyData.minutesToTime(h*60);$(id).appendChild(o)}$('blockEnd').value=1020;$('blockDate').min=new Date().toISOString().slice(0,10);
+async function login(){try{await AndeyData.adminSignIn($('adminEmail').value,$('adminPassword').value);$('loginPanel').style.display='none';$('dashboard').style.display='block';document.querySelectorAll('.dashSection').forEach(x=>x.style.display='block');await refresh()}catch(e){alert(e.message)}}async function refresh(){bookings=await AndeyData.listAdminBookings();blocks=await AndeyData.listBlocks();render();renderBlocks();metrics()}function metrics(){$('mRequested').textContent=bookings.filter(x=>x.status==='Requested').length;$('mConfirmed').textContent=bookings.filter(x=>x.status==='Confirmed').length;const t=new Date().toISOString().slice(0,10);$('mUpcoming').textContent=bookings.filter(x=>x.date>=t&&x.status!=='Cancelled').length;$('mPaid').textContent=bookings.filter(x=>['Paid','Deposit Paid'].includes(x.paymentStatus)).length}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function render(){const d=$('filterDate').value,s=$('filterStatus').value,rows=bookings.filter(x=>(!d||x.date===d)&&(s==='All'||x.status===s));$('bookingRows').innerHTML=rows.map(x=>`<tr><td><b>${esc(x.date)}</b><br>${esc(x.time)} • ${esc(x.duration)}</td><td>${esc(x.service)}<br><small>${esc(x.ages)} yrs • ${esc(x.children)}</small></td><td><b>${esc(x.parent)}</b><br><small>${esc(x.code)}</small></td><td>${esc(x.phone)}<br>${esc(x.email)}<br><small>${esc(x.location)}</small></td><td><span class="badge ${(x.paymentStatus||'Unpaid').replace(' ','-')}">${esc(x.paymentStatus||'Unpaid')}</span><br><small>$${(+x.amountPaid||0).toFixed(2)} / $${(+x.amountTotal||0).toFixed(2)}</small></td><td><span class="status ${esc(x.status)}">${esc(x.status)}</span></td><td><div class="action-row">${x.status!=='Confirmed'?`<button class="btn success tiny" onclick="status('${x.id}','Confirmed')">Confirm</button>`:''}${x.status!=='Cancelled'?`<button class="btn danger tiny" onclick="status('${x.id}','Cancelled')">Cancel</button>`:''}</div></td></tr>`).join('');$('bookingEmpty').style.display=rows.length?'none':'block'}async function status(id,s){try{const updated=await AndeyData.updateStatus(id,s);if(s==='Confirmed'&&updated){try{await AndeyData.sendBookingNotification('confirmed',updated)}catch(e){console.error('Confirmation email error',e)}}await refresh()}catch(e){alert(e.message)}}function clearFilters(){$('filterDate').value='';$('filterStatus').value='All';render()}function renderBlocks(){$('blockRows').innerHTML=blocks.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(AndeyData.minutesToTime(x.startMinute))}–${esc(AndeyData.minutesToTime(x.endMinute))}</td><td>${esc(x.note||'Unavailable')}</td><td><button class="btn danger tiny" onclick="removeBlock('${x.id}')">Remove</button></td></tr>`).join('')}async function addBlock(){const date=$('blockDate').value,startMinute=+$('blockStart').value,endMinute=+$('blockEnd').value,note=$('blockNote').value.trim();if(!date)return alert('Choose a date.');if(endMinute<=startMinute)return alert('End time must be after start time.');await AndeyData.addBlock({date,startMinute,endMinute,note});await refresh()}async function removeBlock(id){await AndeyData.deleteBlock(id);await refresh()}function resetDemo(){if(confirm('Reset demo data?')){AndeyData.resetDemo();if($('dashboard').style.display!=='none')refresh()}}
+</script>
+<div id="adminRescheduleModal" style="display:none;position:fixed;inset:0;background:rgba(12,45,56,.58);z-index:100;align-items:center;justify-content:center;padding:20px">
+  <div style="width:min(620px,96vw);max-height:90vh;overflow:auto;background:#fffdf8;border-radius:24px;padding:26px;box-shadow:0 24px 70px rgba(12,45,56,.28)">
+    <div style="display:flex;justify-content:space-between;gap:16px;align-items:center">
+      <div>
+        <div class="eyebrow">Admin reschedule</div>
+        <h2 style="margin:4px 0 0">Move this booking</h2>
+      </div>
+      <button class="btn secondary" type="button" onclick="closeAdminReschedule()">Close</button>
+    </div>
+    <div id="adminRescheduleSummary" class="note" style="margin:12px 0 18px"></div>
+    <label>New date<input id="adminNewDate" type="date"></label>
+    <label>Duration<select id="adminNewDuration"></select></label>
+    <div style="margin-top:14px">
+      <label>Available start time</label>
+      <div id="adminTimeGrid" class="time-grid" style="margin-top:8px"></div>
+    </div>
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+      <button id="adminSaveReschedule" class="btn" type="button">Save New Time & Email Customer</button>
+    </div>
+  </div>
+</div>
+
+</body></html>
