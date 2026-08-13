@@ -1,0 +1,247 @@
+/* Andey's Beachside — Pastel Sunrise Text Contrast v5.8
+   Keeps ALL v5.7 background/accent colors the same.
+   Only darkens wording and improves readability.
+*/
+
+:root{
+  --text:#2f4b56 !important;
+  --muted:#536d76 !important;
+  --navy:#2f5262 !important;
+  --deep:#294653 !important;
+}
+
+/* Main body copy */
+body{
+  color:var(--text) !important;
+}
+
+p,
+li,
+span,
+label,
+small{
+  text-shadow:none !important;
+}
+
+p,
+.service-card p,
+.about-copy p,
+.expect-grid p,
+.map-copy p,
+.care-card p,
+.acuity-policy-strip p,
+.footer-grid p{
+  color:#3f5d67 !important;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.hero-content h1,
+.section-head h2,
+.about-copy h2,
+.service-card h3,
+.care-card h3,
+.expect-grid h3{
+  color:#294b5b !important;
+}
+
+/* Keep the sunrise accent words unchanged */
+.hero-content h1 span,
+.section-head h2 span,
+.about-copy h2 span{
+  color:#e7a297 !important;
+}
+
+/* Navigation and prominent links */
+nav a,
+.header-logo-link,
+.footer-links a{
+  font-weight:800 !important;
+}
+
+nav a{
+  color:#2f5262 !important;
+}
+
+a:not(.btn):not(.acuity-phone):not(.home-link){
+  color:#4e91a2;
+}
+
+/* Eyebrows / section labels */
+.eyebrow{
+  color:#4f91a2 !important;
+  font-weight:900 !important;
+}
+
+/* Hero readability */
+.hero-content > p{
+  color:#36545f !important;
+  font-weight:500 !important;
+}
+
+.hero-pills span{
+  color:#31515e !important;
+  font-weight:700 !important;
+}
+
+/* Service cards */
+.service-card ul,
+.service-card li{
+  color:#395861 !important;
+}
+
+.service-card small{
+  color:#536d76 !important;
+}
+
+/* About / policy card */
+.cancellation-card p{
+  color:#385761 !important;
+}
+
+.cancellation-card strong{
+  color:#294b5b !important;
+}
+
+/* Experience steps */
+.expect-grid > div p{
+  color:#415f68 !important;
+}
+
+/* Service area is on a medium blue background — retain white text for contrast */
+.area-card,
+.area-card p,
+.area-card strong,
+.area-card h2,
+.area-card h3,
+.area-card .eyebrow,
+.service-note,
+.service-note span,
+.service-note strong{
+  color:#ffffff !important;
+}
+
+.service-chips span{
+  color:#ffffff !important;
+  font-weight:700 !important;
+}
+
+.real-map-badge small{
+  color:#58717a !important;
+}
+
+.real-map-badge strong{
+  color:#294b5b !important;
+}
+
+/* Contact / refund forms */
+.care-card > p,
+.refund-rule{
+  color:#3b5963 !important;
+}
+
+.care-form label{
+  color:#2f4f5b !important;
+  font-weight:800 !important;
+}
+
+.care-form input,
+.care-form textarea,
+.care-form select{
+  color:#294b55 !important;
+  font-weight:500 !important;
+}
+
+.care-form input::placeholder,
+.care-form textarea::placeholder{
+  color:#71858c !important;
+  opacity:1 !important;
+}
+
+.form-privacy-note{
+  color:#586f77 !important;
+}
+
+.form-privacy-note a{
+  color:#3f8192 !important;
+}
+
+/* Acuity wrapper wording */
+.acuity-topline strong{
+  color:#294b5b !important;
+}
+
+.acuity-kicker{
+  color:#4b8fa0 !important;
+  font-weight:900 !important;
+}
+
+.acuity-phone{
+  color:#294b5b !important;
+  font-weight:800 !important;
+}
+
+.acuity-policy-strip p{
+  color:#3b5963 !important;
+}
+
+.acuity-policy-strip strong{
+  color:#294b5b !important;
+}
+
+/* Buttons stay pastel but wording is stronger */
+.btn,
+.btn.secondary{
+  color:#ffffff !important;
+  font-weight:900 !important;
+}
+
+/* Footer keeps the same soft blue-gray background with brighter readable text */
+footer{
+  color:#ffffff !important;
+}
+
+footer p{
+  color:#eef7f8 !important;
+}
+
+.footer-links a{
+  color:#f8fcfd !important;
+}
+
+.footer-saying{
+  color:#ffd8c8 !important;
+  font-weight:800 !important;
+}
+
+/* Tiny utility/muted text */
+.muted,
+.note{
+  color:#536d76 !important;
+}
+
+/* Strong text throughout */
+strong,
+b{
+  color:inherit;
+  font-weight:800;
+}
+
+/* Improve readability on mobile even more */
+@media(max-width:800px){
+  body{
+    color:#2f4b56 !important;
+  }
+
+  .hero-content > p,
+  .service-card p,
+  .about-copy p,
+  .care-card p{
+    color:#35535e !important;
+  }
+}
