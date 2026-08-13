@@ -1,0 +1,374 @@
+/* Andey's Beachside — Mixed Pastel Backgrounds v6.0
+   Adds layered small pastel backgrounds throughout the page.
+   Keeps all current colors, text contrast, section borders, and functionality.
+*/
+
+/* -------- GLOBAL PASTEL CANVAS -------- */
+body{
+  background:
+    radial-gradient(circle at 10% 5%, rgba(246,221,176,.20), transparent 18%),
+    radial-gradient(circle at 88% 9%, rgba(185,228,234,.22), transparent 20%),
+    radial-gradient(circle at 18% 30%, rgba(249,212,197,.14), transparent 18%),
+    radial-gradient(circle at 85% 47%, rgba(238,249,251,.22), transparent 19%),
+    radial-gradient(circle at 12% 68%, rgba(246,221,176,.13), transparent 17%),
+    radial-gradient(circle at 86% 84%, rgba(239,178,168,.13), transparent 20%),
+    linear-gradient(
+      180deg,
+      #f7fcfd 0%,
+      #fffdfa 18%,
+      #fff8f3 36%,
+      #f4fbfc 55%,
+      #fff9f0 74%,
+      #f5fbfc 100%
+    ) !important;
+}
+
+/* Small pastel "islands" behind major sections */
+.services-intro,
+.about-section,
+.expect-section,
+.area-section,
+.customer-care-section,
+.book{
+  overflow:hidden;
+  isolation:isolate;
+}
+
+.services-intro::after,
+.about-section::after,
+.expect-section::after,
+.area-section::after,
+.customer-care-section::after,
+.book::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  border-radius:999px;
+  filter:blur(1px);
+  opacity:.78;
+}
+
+/* -------- SERVICES -------- */
+.services-intro{
+  background:
+    linear-gradient(180deg,rgba(255,253,250,.74),rgba(255,253,250,.74)),
+    radial-gradient(circle at 15% 22%, rgba(185,228,234,.42), transparent 24%),
+    radial-gradient(circle at 85% 74%, rgba(249,212,197,.34), transparent 26%) !important;
+}
+
+.services-intro::after{
+  width:260px;
+  height:125px;
+  left:5%;
+  bottom:22px;
+  background:linear-gradient(135deg,#eef9fb,#f6ddb0);
+  transform:rotate(-8deg);
+}
+
+.services-intro > .container{
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.72),
+      rgba(238,249,251,.48) 42%,
+      rgba(255,244,238,.42) 100%) !important;
+}
+
+/* Each service card gets its own pastel mini-background */
+.swim-card{
+  background:
+    radial-gradient(circle at 88% 12%, rgba(185,228,234,.42), transparent 25%),
+    linear-gradient(180deg,rgba(238,249,251,.95),#fff 38%) !important;
+}
+
+.sit-card{
+  background:
+    radial-gradient(circle at 12% 12%, rgba(249,212,197,.42), transparent 24%),
+    linear-gradient(180deg,rgba(255,242,236,.95),#fff 38%) !important;
+}
+
+/* -------- MEET ANDEY -------- */
+.about-section{
+  background:
+    linear-gradient(135deg,
+      rgba(255,249,242,.90),
+      rgba(251,243,234,.92) 52%,
+      rgba(238,249,251,.74)) !important;
+}
+
+.about-section::after{
+  width:300px;
+  height:150px;
+  right:-55px;
+  top:78px;
+  background:linear-gradient(135deg,#f9d4c5,#f6ddb0);
+  transform:rotate(12deg);
+}
+
+.about-section > .container{
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.66),
+      rgba(255,247,240,.50) 55%,
+      rgba(238,249,251,.36)) !important;
+}
+
+.coach-photo-wrap::after{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:56px;
+  left:-32px;
+  bottom:34px;
+  border-radius:999px;
+  background:rgba(185,228,234,.45);
+  z-index:-1;
+}
+
+.cancellation-card{
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.86),
+      rgba(255,245,237,.76)) !important;
+}
+
+/* -------- EXPERIENCE -------- */
+.expect-section{
+  background:
+    linear-gradient(180deg,
+      rgba(247,252,253,.92),
+      rgba(255,253,250,.92)) !important;
+}
+
+.expect-section::after{
+  width:230px;
+  height:105px;
+  left:8%;
+  top:34px;
+  background:linear-gradient(135deg,#f6ddb0,#fff0e6);
+  transform:rotate(6deg);
+}
+
+.expect-section > .container{
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.72),
+      rgba(255,249,236,.38),
+      rgba(238,249,251,.42)) !important;
+}
+
+.expect-grid > div:nth-child(1){
+  background:linear-gradient(145deg,#f5fbfc,#ffffff) !important;
+}
+
+.expect-grid > div:nth-child(2){
+  background:linear-gradient(145deg,#fff7ef,#ffffff) !important;
+}
+
+.expect-grid > div:nth-child(3){
+  background:linear-gradient(145deg,#fffbed,#ffffff) !important;
+}
+
+.expect-grid > div:nth-child(4){
+  background:linear-gradient(145deg,#fff3ef,#ffffff) !important;
+}
+
+/* -------- SERVICE AREA -------- */
+.area-section{
+  background:
+    radial-gradient(circle at 15% 75%,rgba(246,221,176,.25),transparent 23%),
+    radial-gradient(circle at 92% 18%,rgba(185,228,234,.30),transparent 25%),
+    rgba(255,253,250,.84) !important;
+}
+
+.area-section > .container{
+  background:
+    linear-gradient(145deg,
+      rgba(238,249,251,.56),
+      rgba(255,255,255,.54) 55%,
+      rgba(255,245,238,.46)) !important;
+}
+
+.area-card{
+  background:
+    radial-gradient(circle at 85% 15%,rgba(255,255,255,.12),transparent 23%),
+    linear-gradient(135deg,#6eaebe,#88c7d3 52%,#9ad3db 100%) !important;
+}
+
+/* -------- QUESTIONS / REFUNDS -------- */
+.customer-care-section{
+  background:
+    radial-gradient(circle at 10% 12%,rgba(185,228,234,.30),transparent 22%),
+    radial-gradient(circle at 88% 82%,rgba(249,212,197,.30),transparent 24%),
+    linear-gradient(145deg,#f4fbfc,#fffdfa 48%,#fff5ef) !important;
+}
+
+.customer-care-section::after{
+  width:250px;
+  height:115px;
+  left:-40px;
+  bottom:35px;
+  background:linear-gradient(135deg,#b9e4ea,#eef9fb);
+  transform:rotate(-10deg);
+}
+
+.customer-care-section > .container{
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.69),
+      rgba(238,249,251,.42) 52%,
+      rgba(255,245,239,.40)) !important;
+}
+
+.care-grid .care-card:first-child{
+  background:
+    radial-gradient(circle at 88% 10%,rgba(246,221,176,.30),transparent 22%),
+    linear-gradient(180deg,#fffdf9,#ffffff) !important;
+}
+
+.refund-card{
+  background:
+    radial-gradient(circle at 12% 10%,rgba(185,228,234,.34),transparent 23%),
+    linear-gradient(180deg,#f3fbfc,#ffffff 42%) !important;
+}
+
+/* -------- BOOKING -------- */
+.book{
+  background:
+    radial-gradient(circle at 9% 20%,rgba(185,228,234,.34),transparent 22%),
+    radial-gradient(circle at 91% 78%,rgba(249,212,197,.27),transparent 23%),
+    linear-gradient(140deg,#effafb,#fffdfa 52%,#fff5ef) !important;
+}
+
+.book::after{
+  width:300px;
+  height:140px;
+  right:-35px;
+  top:60px;
+  background:linear-gradient(135deg,#f9d4c5,#f6ddb0);
+  transform:rotate(10deg);
+}
+
+.book > .container{
+  background:
+    linear-gradient(145deg,
+      rgba(255,255,255,.72),
+      rgba(238,249,251,.42) 45%,
+      rgba(255,247,239,.44)) !important;
+}
+
+.acuity-shell{
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,.98),
+      rgba(248,253,253,.98)) !important;
+}
+
+.acuity-topline{
+  background:
+    linear-gradient(110deg,
+      #e9f8fa 0%,
+      #fff9e9 46%,
+      #fde8df 100%) !important;
+}
+
+.acuity-policy-strip > div:nth-child(1){
+  background:rgba(238,249,251,.66) !important;
+}
+
+.acuity-policy-strip > div:nth-child(2){
+  background:rgba(255,249,232,.72) !important;
+}
+
+.acuity-policy-strip > div:nth-child(3){
+  background:rgba(255,241,236,.68) !important;
+}
+
+/* -------- HERO MINI PASTEL BLOCKS -------- */
+.hero{
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:230px;
+  height:105px;
+  left:3%;
+  bottom:36px;
+  border-radius:999px;
+  background:rgba(185,228,234,.32);
+  transform:rotate(-8deg);
+  pointer-events:none;
+}
+
+.hero-logo-showcase{
+  background:
+    radial-gradient(circle at 18% 22%,rgba(246,221,176,.22),transparent 25%),
+    radial-gradient(circle at 82% 78%,rgba(185,228,234,.25),transparent 27%),
+    rgba(255,253,250,.94) !important;
+}
+
+/* -------- FOOTER -------- */
+footer{
+  background:
+    linear-gradient(180deg,#4f6c79,#3f5a67) !important;
+}
+
+footer::before{
+  content:"";
+  display:block;
+  height:8px;
+  background:linear-gradient(
+    90deg,
+    #b9e4ea 0 20%,
+    #f6ddb0 20% 40%,
+    #f9d4c5 40% 60%,
+    #eef9fb 60% 80%,
+    #efb2a8 80% 100%
+  );
+}
+
+/* -------- SMALL DECORATIVE PASTEL SPOTS -------- */
+.section-head{
+  z-index:1;
+}
+
+.section-head::before{
+  content:"";
+  position:absolute;
+  width:46px;
+  height:18px;
+  left:50%;
+  top:-18px;
+  transform:translateX(-50%) rotate(-5deg);
+  border-radius:999px;
+  background:rgba(185,228,234,.30);
+  z-index:-1;
+}
+
+/* Keep everything subtle on phones */
+@media(max-width:800px){
+  .services-intro::after,
+  .about-section::after,
+  .expect-section::after,
+  .customer-care-section::after,
+  .book::after{
+    opacity:.46;
+    transform:scale(.72);
+  }
+
+  .hero::before{
+    width:150px;
+    height:70px;
+    opacity:.65;
+  }
+
+  .services-intro > .container,
+  .about-section > .container,
+  .expect-section > .container,
+  .area-section > .container,
+  .customer-care-section > .container,
+  .book > .container{
+    background:rgba(255,255,255,.61) !important;
+  }
+}
