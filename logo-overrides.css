@@ -1,0 +1,177 @@
+
+/* Andey's Beachside — Logo Integration v5.0 */
+
+/* Header: let the real brand lead without making navigation feel crowded */
+.brand-logo-link{
+  display:flex !important;
+  align-items:center;
+  flex:0 0 auto;
+  text-decoration:none;
+  padding:3px 0;
+}
+.header-logo{
+  display:block;
+  width:178px;
+  height:auto;
+  max-height:92px;
+  object-fit:contain;
+  filter:drop-shadow(0 5px 12px rgba(18,59,74,.08));
+  transition:transform .22s ease, filter .22s ease;
+}
+.brand-logo-link:hover .header-logo{
+  transform:translateY(-1px) scale(1.015);
+  filter:drop-shadow(0 8px 15px rgba(18,59,74,.12));
+}
+
+/* Hero: logo becomes a premium visual focal point */
+.hero-logo-showcase{
+  position:relative;
+  min-height:470px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  isolation:isolate;
+  padding:34px 25px 54px;
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(255,255,255,.97),rgba(255,253,244,.80) 58%,rgba(211,239,243,.55) 100%);
+  border:1px solid rgba(62,145,160,.14);
+  box-shadow:
+    0 26px 65px rgba(18,59,74,.13),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  overflow:hidden;
+}
+.hero-logo-showcase::before{
+  content:"";
+  position:absolute;
+  width:430px;
+  height:430px;
+  border-radius:50%;
+  border:1px solid rgba(245,198,78,.18);
+  box-shadow:
+    0 0 0 30px rgba(101,191,206,.055),
+    0 0 0 65px rgba(245,198,78,.035);
+  z-index:-1;
+}
+.logo-glow{
+  position:absolute;
+  width:68%;
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,216,108,.24),rgba(115,204,217,.10) 42%,transparent 70%);
+  filter:blur(4px);
+  z-index:-1;
+}
+.hero-brand-logo{
+  width:min(100%,540px);
+  height:auto;
+  display:block;
+  transform:translateY(-5px);
+  filter:drop-shadow(0 16px 18px rgba(18,59,74,.10));
+}
+.hero-logo-note{
+  position:absolute;
+  right:22px;
+  bottom:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  padding:10px 15px;
+  border-radius:15px;
+  background:rgba(255,253,247,.91);
+  border:1px solid rgba(18,59,74,.07);
+  box-shadow:0 8px 22px rgba(18,59,74,.10);
+  backdrop-filter:blur(8px);
+}
+.hero-logo-note span{
+  font-size:.68rem;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:var(--blue);
+  font-weight:900;
+}
+.hero-logo-note strong{
+  margin-top:2px;
+  color:var(--navy);
+  font-family:Georgia,serif;
+  font-size:.95rem;
+}
+
+/* Footer brand: visible, but calmer than the hero */
+.footer-logo-link{
+  display:inline-block;
+  width:min(100%,235px);
+  text-decoration:none;
+  margin-bottom:8px;
+}
+.footer-logo{
+  display:block;
+  width:100%;
+  height:auto;
+  filter:drop-shadow(0 7px 15px rgba(18,59,74,.09));
+}
+
+/* Give header nav enough breathing room with the new visual mark */
+.nav{
+  gap:22px;
+}
+.nav nav{
+  margin-left:auto;
+}
+
+/* Tablet */
+@media(max-width:1060px){
+  .header-logo{width:150px}
+  .nav{gap:14px}
+  .nav nav{gap:12px}
+  .hero-logo-showcase{min-height:420px}
+}
+
+/* Mobile: logo stays unmistakable and centered */
+@media(max-width:800px){
+  .nav{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .brand-logo-link{
+    width:100%;
+    justify-content:center;
+  }
+  .header-logo{
+    width:190px;
+    max-height:none;
+  }
+  .nav nav{
+    margin-left:0;
+    width:100%;
+    justify-content:center;
+  }
+  .hero-logo-showcase{
+    min-height:360px;
+    padding:25px 18px 58px;
+    border-radius:28px;
+  }
+  .hero-logo-showcase::before{
+    width:330px;
+    height:330px;
+  }
+  .hero-brand-logo{
+    width:min(100%,470px);
+  }
+}
+
+@media(max-width:520px){
+  .header-logo{width:165px}
+  .hero-logo-showcase{
+    min-height:315px;
+  }
+  .hero-logo-note{
+    left:15px;
+    right:15px;
+    bottom:14px;
+    align-items:center;
+  }
+  .hero-brand-logo{
+    width:100%;
+  }
+}
