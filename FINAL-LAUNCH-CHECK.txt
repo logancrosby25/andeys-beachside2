@@ -1,0 +1,72 @@
+ANDEY'S BEACHSIDE BABYSITTING & SWIM
+FINAL LAUNCH AUDIT — v6.0
+Date: August 13, 2026
+
+RESULT
+STATIC / CODE-LEVEL LAUNCH AUDIT: PASS
+
+CHECKS COMPLETED
+[PASS] All required production files are present.
+[PASS] No broken local image, CSS, page, favicon, or manifest references.
+[PASS] No duplicate HTML IDs.
+[PASS] All homepage anchor buttons point to real sections.
+[PASS] One H1, proper page title, meta description, canonical URL, and viewport.
+[PASS] Open Graph and Twitter social-sharing metadata.
+[PASS] 1200x630 social sharing image.
+[PASS] Valid LocalBusiness JSON-LD structured data.
+[PASS] Public Admin link removed.
+[PASS] Placeholder review/testimonial section removed.
+[PASS] No stale "Stripe Sandbox", "Test Checkout", Phase 1/2, deposit, demo-booking, or Semi-Private wording.
+[PASS] 30-minute private swim: $45.
+[PASS] 60-minute private swim: $60.
+[PASS] Two-child private swim: $100.
+[PASS] Babysitting: $25/hour with 2-hour minimum.
+[PASS] Swim packages are shown as coming soon.
+[PASS] 30-minute unbilled travel buffer is stated.
+[PASS] 24-hour cancellation/rescheduling rule is stated.
+[PASS] 24+ hour cancellation = 90% refund / 10% booking fee retained.
+[PASS] Under-age-3 parent/guardian-in-water requirement is stated.
+[PASS] Phone number 562.280.5469 is present and clickable.
+[PASS] Acuity iframe uses owner 40133687 and allows payment.
+[PASS] Acuity embed helper script is included.
+[PASS] Question form has the correct fields.
+[PASS] Refund request form has the correct required fields and acknowledgement.
+[PASS] Both forms target the working Supabase site-contact endpoint.
+[PASS] Refund form clearly states that requests are reviewed and are not automatic refunds.
+[PASS] Privacy Notice includes Acuity, Stripe, Supabase, Resend, and child-related information handling.
+[PASS] Terms include full payment, refund policy, travel buffer, babysitting price/minimum, and under-3 swim rule.
+[PASS] privacy.html, terms.html, and 404.html have no broken local links.
+[PASS] manifest.webmanifest is valid JSON and its icons exist.
+[PASS] sitemap.xml is valid XML and contains Home, Privacy, and Terms.
+[PASS] robots.txt points to the sitemap and excludes the legacy admin/manage utility pages from crawling.
+[PASS] favicon.png = 512x512.
+[PASS] Apple touch icon = 180x180.
+[PASS] PWA icons = 192x192 and 512x512.
+[PASS] All stylesheet brace/syntax balance checks passed.
+[PASS] Homepage inline JavaScript passed Node syntax validation.
+[PASS] Pastel Ocean Sunrise -> Dark Text -> Clear Sections -> Mixed Pastel Backgrounds CSS loads in the correct order.
+[PASS] Responsive/mobile media queries are present throughout the stylesheet stack.
+[PASS] All visible images have alt text.
+[PASS] Visible form controls are labeled; hidden honeypot spam fields are intentionally aria-hidden and removed from tab order.
+[PASS] Status messages use aria-live for accessible form feedback.
+
+ALREADY CONFIRMED DURING SETUP
+- The Questions form successfully displayed "Message sent" after the Resend/Supabase recipient fix.
+- Supabase site-contact reached Resend successfully once the notification email secret was corrected.
+- Acuity is the public booking system and the old custom booking flow has been removed from the homepage.
+
+FINAL LIVE / REAL-WORLD CHECKS THAT CANNOT BE FULLY SIMULATED FROM THIS LOCAL AUDIT
+1. Confirm v6.0 has finished deploying on Vercel and hard-refresh the live site on an iPhone and desktop.
+2. Submit one live Refund Request using test information and confirm Andey receives it.
+3. Run one end-to-end Acuity + Stripe payment. Best option: temporarily create a $1 hidden/test service, book it, verify payment + confirmation + calendar entry, then remove/hide it.
+4. Confirm the 30-minute Acuity buffer actually blocks the following time on the live calendar.
+5. Confirm the 24-hour cancel/reschedule restriction from a customer confirmation link.
+6. Google Business Profile verification is still an external dependency before adding the direct Google Review button.
+7. Search-engine indexing can take time after a new site/sitemap submission.
+
+DEPLOYMENT
+This ZIP contains the exact CUSTOMER-FACING files checked in this audit.
+Upload/replace these files in the repository root.
+
+IMPORTANT:
+Do NOT delete your existing admin.html, manage.html, Supabase functions, Stripe configuration, Resend secrets, or other backend/historical-booking files just because they are not in this public bundle.
