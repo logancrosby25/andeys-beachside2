@@ -1,0 +1,273 @@
+/* Andey's Beachside — Clear Section Outlines v5.9
+   Keeps the pastel ocean sunrise palette and darker text.
+   Adds visual boundaries, spacing, subtle borders, and soft elevation.
+*/
+
+/* Give every major content section a little more breathing room */
+.services-intro,
+.about-section,
+.expect-section,
+.area-section,
+.customer-care-section,
+.book{
+  position:relative;
+  padding-top:74px !important;
+  padding-bottom:74px !important;
+}
+
+/* Soft divider between major sections */
+.services-intro::before,
+.about-section::before,
+.expect-section::before,
+.area-section::before,
+.customer-care-section::before,
+.book::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:min(1080px,88%);
+  height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(110,174,190,.34) 22%,
+    rgba(239,178,168,.30) 50%,
+    rgba(110,174,190,.34) 78%,
+    transparent
+  );
+}
+
+/* Main section frames */
+.services-intro > .container,
+.about-section > .container,
+.expect-section > .container,
+.customer-care-section > .container,
+.book > .container{
+  position:relative;
+  border:1.5px solid rgba(76,119,132,.20);
+  border-radius:34px;
+  padding:clamp(28px,4vw,48px) !important;
+  background:rgba(255,255,255,.48);
+  box-shadow:
+    0 16px 42px rgba(49,75,88,.07),
+    inset 0 1px 0 rgba(255,255,255,.85);
+}
+
+/* Slightly different outline colors by section for easy visual scanning */
+.services-intro > .container{
+  border-color:rgba(110,174,190,.28);
+  box-shadow:
+    0 16px 44px rgba(110,174,190,.08),
+    inset 0 1px 0 rgba(255,255,255,.88);
+}
+
+.about-section > .container{
+  border-color:rgba(239,178,168,.28);
+  box-shadow:
+    0 16px 44px rgba(239,178,168,.08),
+    inset 0 1px 0 rgba(255,255,255,.88);
+}
+
+.expect-section > .container{
+  border-color:rgba(246,221,176,.52);
+  box-shadow:
+    0 16px 44px rgba(246,221,176,.10),
+    inset 0 1px 0 rgba(255,255,255,.90);
+}
+
+.customer-care-section > .container{
+  border-color:rgba(110,174,190,.26);
+  box-shadow:
+    0 17px 46px rgba(49,75,88,.08),
+    inset 0 1px 0 rgba(255,255,255,.88);
+}
+
+.book > .container{
+  border-color:rgba(239,178,168,.24);
+  box-shadow:
+    0 18px 48px rgba(49,75,88,.09),
+    inset 0 1px 0 rgba(255,255,255,.90);
+}
+
+/* Give headings a subtle underline anchor */
+.section-head{
+  position:relative;
+  margin-bottom:34px !important;
+}
+
+.section-head::after{
+  content:"";
+  display:block;
+  width:76px;
+  height:4px;
+  margin:18px auto 0;
+  border-radius:999px;
+  background:linear-gradient(90deg,#9fd4de,#f6ddb0,#efb2a8);
+  opacity:.92;
+}
+
+/* Meet Andey section does not use section-head, so give the heading its own accent */
+.about-copy h2{
+  position:relative;
+  padding-bottom:18px;
+}
+
+.about-copy h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:72px;
+  height:4px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#efb2a8,#f6ddb0);
+}
+
+/* Individual service cards more clearly defined */
+.service-card{
+  border-width:1.5px !important;
+  box-shadow:
+    0 15px 34px rgba(49,75,88,.08),
+    inset 0 1px 0 rgba(255,255,255,.92) !important;
+}
+
+.swim-card{
+  border-left:1.5px solid rgba(110,174,190,.22) !important;
+  border-right:1.5px solid rgba(110,174,190,.22) !important;
+  border-bottom:1.5px solid rgba(110,174,190,.22) !important;
+}
+
+.sit-card{
+  border-left:1.5px solid rgba(239,178,168,.22) !important;
+  border-right:1.5px solid rgba(239,178,168,.22) !important;
+  border-bottom:1.5px solid rgba(239,178,168,.22) !important;
+}
+
+/* Experience boxes get clearer cards */
+.expect-grid > div{
+  border:1.5px solid rgba(110,174,190,.18) !important;
+  border-radius:20px !important;
+  padding:24px 22px !important;
+  box-shadow:0 10px 24px rgba(49,75,88,.055) !important;
+}
+
+/* Service area already has its own bold blue card; frame the section around it lightly */
+.area-section > .container{
+  position:relative;
+  border:1.5px solid rgba(110,174,190,.22);
+  border-radius:34px;
+  padding:clamp(18px,3vw,30px) !important;
+  background:rgba(255,255,255,.40);
+  box-shadow:0 16px 44px rgba(49,75,88,.065);
+}
+
+.area-card{
+  border:1px solid rgba(255,255,255,.28) !important;
+}
+
+/* Customer care cards more distinct from their parent section */
+.care-card{
+  border:1.5px solid rgba(76,119,132,.18) !important;
+  box-shadow:
+    0 14px 32px rgba(49,75,88,.075),
+    inset 0 1px 0 rgba(255,255,255,.92) !important;
+}
+
+.care-grid .care-card:first-child{
+  border-top-width:5px !important;
+}
+
+.refund-card{
+  border-top-width:5px !important;
+}
+
+/* Form fields are easier to distinguish */
+.care-form input,
+.care-form textarea,
+.care-form select{
+  border-width:1.5px !important;
+}
+
+/* Acuity itself becomes a clearly outlined booking module */
+.acuity-shell{
+  border-width:1.5px !important;
+  overflow:hidden;
+}
+
+.acuity-frame-wrap{
+  border-top:1px solid rgba(110,174,190,.16);
+  border-bottom:1px solid rgba(110,174,190,.16);
+}
+
+/* Policy items under booking are visually separated */
+.acuity-policy-strip > div{
+  padding:14px 16px;
+  border-radius:16px;
+  border:1px solid rgba(76,119,132,.11);
+  background:rgba(255,255,255,.38);
+}
+
+/* Pills/chips get more visible outlines */
+.hero-pills span,
+.pill,
+.service-chips span{
+  border-width:1.5px !important;
+}
+
+/* Gentle decorative corner dots reinforce section framing */
+.services-intro > .container::before,
+.about-section > .container::before,
+.expect-section > .container::before,
+.customer-care-section > .container::before,
+.book > .container::before{
+  content:"";
+  position:absolute;
+  top:18px;
+  right:20px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#f6ddb0;
+  box-shadow:
+    -17px 0 0 #b9e4ea,
+    -34px 0 0 #efb2a8;
+  opacity:.78;
+}
+
+/* Mobile: maintain definition without making sections feel cramped */
+@media(max-width:800px){
+  .services-intro,
+  .about-section,
+  .expect-section,
+  .area-section,
+  .customer-care-section,
+  .book{
+    padding-top:46px !important;
+    padding-bottom:46px !important;
+  }
+
+  .services-intro > .container,
+  .about-section > .container,
+  .expect-section > .container,
+  .area-section > .container,
+  .customer-care-section > .container,
+  .book > .container{
+    width:94% !important;
+    border-radius:24px;
+    padding:26px 18px !important;
+  }
+
+  .section-head{
+    margin-bottom:26px !important;
+  }
+
+  .expect-grid > div{
+    padding:20px 18px !important;
+  }
+
+  .acuity-policy-strip > div{
+    padding:13px 12px;
+  }
+}
