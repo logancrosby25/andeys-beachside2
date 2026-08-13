@@ -1,0 +1,342 @@
+/* Andey's Beachside — Pastel Ocean Sunrise v5.7
+   Soft, airy coastal palette with seafoam, pale sky, blush coral, peach, cream, and sunrise warmth.
+   Visual styling only — no functional logic changed.
+*/
+
+:root{
+  --navy:#38586a !important;
+  --deep:#314b58 !important;
+  --blue:#6eaebe !important;
+  --aqua:#b9e4ea !important;
+  --sky:#eef9fb !important;
+  --sand:#fbf3ea !important;
+  --cream:#fffdfa !important;
+  --coral:#efb2a8 !important;
+  --sun:#f6ddb0 !important;
+  --peach:#f9d4c5 !important;
+  --text:#4c6670 !important;
+  --muted:#7b9198 !important;
+}
+
+/* whole page atmosphere */
+html{
+  background:#fffdfa !important;
+}
+body{
+  color:var(--text) !important;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(246,221,176,.24), transparent 22%),
+    radial-gradient(circle at 88% 16%, rgba(185,228,234,.30), transparent 26%),
+    radial-gradient(circle at 24% 68%, rgba(249,212,197,.18), transparent 24%),
+    linear-gradient(
+      180deg,
+      #f5fcfd 0%,
+      #fffdfa 22%,
+      #fff7f1 48%,
+      #f1fbfc 74%,
+      #fffdfa 100%
+    ) !important;
+}
+
+/* top strip + nav */
+.topbar{
+  background:linear-gradient(90deg,#6eaebe,#86c2cf,#efb2a8) !important;
+  color:#fff !important;
+}
+header{
+  background:rgba(255,253,250,.93) !important;
+  border-bottom:1px solid rgba(110,174,190,.15) !important;
+  box-shadow:0 8px 28px rgba(49,75,88,.05) !important;
+}
+nav a{
+  color:var(--navy) !important;
+}
+
+/* buttons */
+.btn{
+  background:linear-gradient(135deg,#efb2a8,#f4c3b2) !important;
+  color:#fff !important;
+  box-shadow:0 10px 24px rgba(239,178,168,.24) !important;
+}
+.btn:hover{
+  box-shadow:0 14px 30px rgba(239,178,168,.30) !important;
+}
+.btn.secondary{
+  background:linear-gradient(135deg,#83bcc9,#6eaebe) !important;
+  box-shadow:0 10px 24px rgba(110,174,190,.22) !important;
+}
+
+/* hero */
+.hero{
+  background:
+    linear-gradient(105deg,
+      rgba(255,253,250,.98) 0%,
+      rgba(255,253,250,.95) 42%,
+      rgba(255,253,250,.72) 64%,
+      rgba(255,253,250,.18) 100%),
+    linear-gradient(150deg,
+      #fce6dc 0 20%,
+      #f9efe4 20% 38%,
+      #eef9fb 38% 72%,
+      #ccecf1 72% 100%) !important;
+}
+.sun-orb{
+  background:#f6ddb0 !important;
+  box-shadow:
+    0 0 0 20px rgba(246,221,176,.20),
+    0 0 0 42px rgba(246,221,176,.10) !important;
+}
+.hero-content h1,
+.section-head h2,
+.about-copy h2{
+  color:var(--navy) !important;
+}
+.hero-content h1 span,
+.section-head h2 span,
+.about-copy h2 span{
+  color:#e7a297 !important;
+}
+.hero-pills span{
+  background:rgba(255,255,255,.80) !important;
+  border:1px solid rgba(110,174,190,.14) !important;
+  color:var(--navy) !important;
+}
+
+/* logo showcase */
+.hero-logo-showcase{
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,.98), rgba(255,248,242,.93) 55%, rgba(228,245,248,.84) 100%) !important;
+  border:1px solid rgba(110,174,190,.14) !important;
+  box-shadow:0 22px 54px rgba(49,75,88,.10) !important;
+}
+.hero-logo-showcase::before{
+  border-color:rgba(246,221,176,.28) !important;
+  box-shadow:
+    0 0 0 28px rgba(185,228,234,.12),
+    0 0 0 56px rgba(246,221,176,.08) !important;
+}
+.logo-glow{
+  background:radial-gradient(circle,
+    rgba(246,221,176,.30),
+    rgba(185,228,234,.18) 46%,
+    transparent 72%) !important;
+}
+
+/* sections */
+.services-intro,
+.expect-section,
+.area-section{
+  background:rgba(255,253,250,.72) !important;
+}
+.service-card,
+.expect-grid > div,
+.care-card{
+  background:rgba(255,255,255,.93) !important;
+  border-color:rgba(110,174,190,.10) !important;
+  box-shadow:0 18px 42px rgba(49,75,88,.07) !important;
+}
+
+.swim-card{
+  border-top:5px solid #9bd4df !important;
+  background:linear-gradient(180deg, rgba(238,249,251,.94), #fff 33%) !important;
+}
+.swim-card::before{
+  background:#eef9fb !important;
+}
+.sit-card{
+  border-top:5px solid #efb2a8 !important;
+  background:linear-gradient(180deg, rgba(255,243,239,.94), #fff 33%) !important;
+}
+.sit-card::before{
+  background:#fff0ea !important;
+}
+.card-number{
+  color:rgba(56,88,106,.16) !important;
+}
+.service-card ul li::marker{
+  color:#9ecfd9 !important;
+}
+
+/* meet andey */
+.sand,
+.about-section{
+  background:
+    linear-gradient(140deg,
+      rgba(251,243,234,.96),
+      rgba(255,249,244,.98) 52%,
+      rgba(238,249,251,.74)) !important;
+}
+.coach-photo-wrap{
+  box-shadow:0 22px 58px rgba(49,75,88,.13) !important;
+}
+.photo-caption{
+  background:rgba(255,253,250,.93) !important;
+}
+.cancellation-card{
+  background:rgba(255,255,255,.78) !important;
+  border:1px solid rgba(239,178,168,.22) !important;
+}
+.policy-sun{
+  background:rgba(246,221,176,.32) !important;
+}
+
+/* experience steps */
+.expect-grid b{
+  color:#e7a297 !important;
+}
+
+/* map / service area */
+.area-card{
+  background:
+    linear-gradient(135deg,#6eaebe,#88c7d3 50%, #9ad3db 100%) !important;
+  color:#fff !important;
+  box-shadow:0 24px 64px rgba(110,174,190,.24) !important;
+}
+.area-card h3,
+.area-card p,
+.area-card strong{
+  color:#fff !important;
+}
+.real-map-badge{
+  background:rgba(255,253,250,.94) !important;
+  color:var(--navy) !important;
+}
+.service-chips span{
+  background:rgba(255,255,255,.14) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+}
+.service-note{
+  background:rgba(255,255,255,.12) !important;
+  border-color:rgba(255,255,255,.14) !important;
+}
+
+/* question/refund section */
+.customer-care-section{
+  background:
+    linear-gradient(145deg,
+      rgba(238,249,251,.88),
+      rgba(255,253,250,.94) 42%,
+      rgba(255,243,239,.58)) !important;
+}
+.care-grid .care-card:first-child{
+  border-top:5px solid #f6ddb0 !important;
+}
+.refund-card{
+  border-top:5px solid #9fd4de !important;
+  background:
+    linear-gradient(180deg, rgba(238,249,251,.92), rgba(255,253,250,.98) 32%) !important;
+}
+.care-icon{
+  background:rgba(246,221,176,.38) !important;
+}
+.refund-rule{
+  background:rgba(255,255,255,.74) !important;
+  border-color:rgba(110,174,190,.10) !important;
+}
+.care-form input,
+.care-form textarea,
+.care-form select{
+  background:#fffdfa !important;
+  border-color:rgba(110,174,190,.16) !important;
+}
+.care-form input:focus,
+.care-form textarea:focus,
+.care-form select:focus{
+  border-color:rgba(110,174,190,.55) !important;
+  box-shadow:0 0 0 3px rgba(185,228,234,.22) !important;
+}
+.form-status.success{
+  color:#5b8e77 !important;
+}
+.form-status.error{
+  color:#b26c69 !important;
+}
+
+/* booking / acuity */
+.book{
+  background:
+    linear-gradient(140deg,
+      #eef9fb 0%,
+      #f7fdfe 27%,
+      #fff7f1 57%,
+      #fffdfa 100%) !important;
+}
+.acuity-shell{
+  background:rgba(255,253,250,.97) !important;
+  border-color:rgba(110,174,190,.14) !important;
+  box-shadow:0 24px 65px rgba(49,75,88,.11) !important;
+}
+.acuity-topline{
+  background:
+    linear-gradient(135deg,
+      rgba(233,248,251,.98),
+      rgba(255,246,232,.98) 55%,
+      rgba(250,223,214,.92)) !important;
+}
+.acuity-phone{
+  background:rgba(255,255,255,.82) !important;
+  color:var(--navy) !important;
+}
+.acuity-policy-strip{
+  background:
+    linear-gradient(90deg,
+      rgba(238,249,251,.76),
+      rgba(255,248,235,.80),
+      rgba(255,241,235,.72)) !important;
+}
+.acuity-policy-strip strong{
+  color:var(--navy) !important;
+}
+
+/* footer */
+footer{
+  background:linear-gradient(180deg,#4f6c79,#3f5a67) !important;
+  color:#edf7f8 !important;
+}
+footer p{
+  color:#d4e8ec !important;
+}
+.footer-saying{
+  color:#f4c7b6 !important;
+}
+.footer-links a:hover{
+  color:#f6ddb0 !important;
+}
+
+/* polish */
+.eyebrow{
+  color:#78b7c6 !important;
+}
+a{
+  color:#6eaebe;
+}
+::selection{
+  background:rgba(246,221,176,.60);
+  color:var(--navy);
+}
+:focus-visible{
+  outline:3px solid rgba(110,174,190,.36);
+  outline-offset:3px;
+}
+
+@media(max-width:800px){
+  body{
+    background:
+      linear-gradient(
+        180deg,
+        #f6fcfd 0%,
+        #fffdfa 24%,
+        #fff7f1 50%,
+        #f2fbfc 75%,
+        #fffdfa 100%
+      ) !important;
+  }
+  .hero{
+    background:
+      linear-gradient(160deg,
+        #fffdfa 0%,
+        #fff7f1 36%,
+        #eef9fb 70%,
+        #d7f0f4 100%) !important;
+  }
+}
