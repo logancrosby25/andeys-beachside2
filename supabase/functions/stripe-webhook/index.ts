@@ -1,0 +1,4 @@
+// Supabase Edge Function: stripe-webhook
+// Configure Stripe to send checkout.session.completed events here and set STRIPE_WEBHOOK_SECRET.
+import Stripe from 'npm:stripe@18';import { createClient } from 'npm:@supabase/supabase-js@2';
+Deno.serve(async(req)=>{const stripe=new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!);const body=await req.text();let event;try{event=stripe.webhooks.constructEvent(body,req.headers.get('stripe-signature')!,Deno.env.get('STRIPE_WEBHOOK_SECRET')!)}catch(e){return new Response(`Webhook error: ${e.message}`,{status:400})}if(event.type==='checkout.session.completed'){const s=event.data.object;const supabase=createClient(Deno.env.get('SUPABASE_URL')!,Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!);const full=s.metadata?.payment_choice==='full';await supabase.from('bookings').update({payment_status:full?'Paid':'Deposit Paid',amount_paid:(s.amount_total||0)/100}).eq('id',s.metadata?.booking_id)}return new Response('ok')});

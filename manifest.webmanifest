@@ -1,0 +1,8 @@
+{
+  "name": "Andey\u2019s Beachside Babysitting & Swim",
+  "short_name": "Andey\u2019s Beachside",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#123b4a"
+}

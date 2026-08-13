@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andey’s Beachside Babysitting & Swim</title>
+  <meta name="description" content="Andey’s Beachside Babysitting & Swim — trusted babysitting, private swim lessons, and vacation childcare for families along the beach." />
+  <style>
+    :root{
+      --navy:#123b4a;
+      --blue:#2e7890;
+      --sky:#dff3f6;
+      --sand:#f8f0df;
+      --cream:#fffdf8;
+      --coral:#e89b78;
+      --text:#23404a;
+      --muted:#61767d;
+      --white:#fff;
+      --shadow:0 14px 40px rgba(18,59,74,.12);
+      --radius:22px;
+    }
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{
+      margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);
+      background:var(--cream);line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+    .topbar{
+      background:var(--navy);color:#fff;text-align:center;padding:9px 15px;
+      font-size:.9rem;letter-spacing:.2px;
+    }
+    header{
+      position:sticky;top:0;z-index:20;background:rgba(255,253,248,.95);
+      backdrop-filter:blur(10px);border-bottom:1px solid rgba(18,59,74,.08);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:20px}
+    .brand{font-weight:800;color:var(--navy);line-height:1.05;font-size:1.05rem}
+    .brand span{display:block;font-weight:500;color:var(--blue);font-size:.75rem;margin-top:4px}
+    nav{display:flex;gap:24px;align-items:center}
+    nav a{font-weight:700;font-size:.94rem;color:var(--navy)}
+    .btn{
+      display:inline-block;background:var(--coral);color:#fff;padding:13px 20px;border-radius:999px;
+      font-weight:800;border:0;cursor:pointer;box-shadow:0 7px 18px rgba(232,155,120,.25)
+    }
+    .btn.secondary{background:var(--navy)}
+    .menu{display:none;background:none;border:0;font-size:1.7rem;color:var(--navy);cursor:pointer}
+    .hero{
+      min-height:650px;display:flex;align-items:center;position:relative;overflow:hidden;
+      background:
+        linear-gradient(90deg,rgba(255,253,248,.98) 0%,rgba(255,253,248,.91) 48%,rgba(255,253,248,.2) 100%),
+        radial-gradient(circle at 80% 20%,#b9e5eb 0 13%,transparent 14%),
+        linear-gradient(135deg,#e9f7f7,#b7dfe7);
+    }
+    .hero:after{
+      content:"";position:absolute;right:-80px;bottom:-130px;width:480px;height:480px;border-radius:50%;
+      background:rgba(255,255,255,.38);
+    }
+    .hero-content{position:relative;z-index:2;max-width:650px;padding:75px 0}
+    .eyebrow{color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:.8rem}
+    h1{font-size:clamp(2.7rem,6vw,5rem);line-height:.98;margin:13px 0 20px;color:var(--navy);letter-spacing:-2px}
+    .hero p{font-size:1.15rem;color:var(--muted);max-width:600px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .wave{height:80px;background:var(--cream);margin-top:-1px;clip-path:ellipse(70% 70% at 50% 100%)}
+    section{padding:85px 0}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 45px}
+    .section-head h2{font-size:2.35rem;line-height:1.1;color:var(--navy);margin:8px 0 12px}
+    .section-head p{color:var(--muted);margin:0}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+    .card{
+      background:#fff;border:1px solid rgba(18,59,74,.08);border-radius:var(--radius);
+      padding:32px;box-shadow:var(--shadow)
+    }
+    .icon{font-size:2.2rem}
+    .card h3{font-size:1.5rem;color:var(--navy);margin:12px 0 8px}
+    .card ul{padding-left:20px;color:var(--muted)}
+    .sand{background:var(--sand)}
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .price{
+      background:#fff;border-radius:20px;padding:28px;text-align:center;border:1px solid rgba(18,59,74,.08);
+      box-shadow:0 10px 25px rgba(18,59,74,.07)
+    }
+    .price h3{margin:0;color:var(--navy)}
+    .price .amount{font-size:2rem;font-weight:900;color:var(--blue);margin:10px 0}
+    .price p{color:var(--muted);font-size:.95rem}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+    .photo{
+      min-height:430px;border-radius:30px;
+      background:
+        linear-gradient(160deg,rgba(46,120,144,.05),rgba(232,155,120,.12)),
+        radial-gradient(circle at 30% 25%,#fff 0 8%,transparent 9%),
+        linear-gradient(135deg,#d7eef0,#f8e6c6);
+      box-shadow:var(--shadow);position:relative;overflow:hidden;
+    }
+    .photo:before{content:"🌊";position:absolute;font-size:9rem;right:18%;top:17%;opacity:.75}
+    .photo:after{content:"☀️";position:absolute;font-size:5rem;left:14%;top:16%;opacity:.8}
+    .about h2{font-size:2.35rem;line-height:1.1;color:var(--navy)}
+    .about p{color:var(--muted)}
+    .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .pill{background:var(--sky);padding:9px 14px;border-radius:999px;font-weight:700;font-size:.9rem;color:var(--navy)}
+    .area{
+      background:var(--navy);color:#fff;border-radius:30px;padding:55px;text-align:center;
+      box-shadow:var(--shadow)
+    }
+    .area h2{font-size:2.3rem;margin-top:0}
+    .area p{color:#dbecef;max-width:700px;margin:0 auto 25px}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+    .contact-box{background:#fff;padding:30px;border-radius:22px;box-shadow:var(--shadow)}
+    .contact-box h3{color:var(--navy);margin-top:0}
+    .contact-box p{color:var(--muted)}
+    .book{background:linear-gradient(135deg,#e4f5f6,#fff1e9)}
+    form{display:grid;gap:14px;max-width:760px;margin:auto;background:#fff;padding:32px;border-radius:24px;box-shadow:var(--shadow)}
+    label{font-weight:800;color:var(--navy)}
+    input,select,textarea{
+      width:100%;padding:13px 14px;margin-top:6px;border:1px solid #cddde1;border-radius:12px;
+      font:inherit;background:#fff
+    }
+    textarea{min-height:120px;resize:vertical}
+    .note{font-size:.86rem;color:var(--muted);margin:0}
+    footer{background:#0c2d38;color:#dbecef;padding:45px 0}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:35px}
+    footer h3,footer h4{color:#fff;margin-top:0}
+    footer a{display:block;margin:7px 0;color:#dbecef}
+    .copyright{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:20px;font-size:.85rem;color:#a9c3c9}
+    /* Phase 2 booking system */
+    .booking-shell{max-width:980px;margin:auto;background:#fff;border-radius:30px;box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(18,59,74,.08)}
+    .booking-progress{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy);color:#cfe5ea}
+    .booking-step{padding:15px 10px;text-align:center;font-size:.82rem;font-weight:800;border-right:1px solid rgba(255,255,255,.12)}
+    .booking-step.active{background:var(--blue);color:#fff}.booking-step.done{color:#fff}
+    .booking-panel{padding:34px}.booking-page{display:none}.booking-page.active{display:block}
+    .service-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+    .service-option{border:2px solid #d8e7ea;border-radius:18px;padding:20px;cursor:pointer;background:#fff;text-align:left;transition:.2s}
+    .service-option:hover,.service-option.selected{border-color:var(--blue);background:var(--sky);transform:translateY(-2px)}
+    .service-option strong{display:block;color:var(--navy);font-size:1.05rem;margin:5px 0}.service-option small{color:var(--muted)}
+    .booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.full{grid-column:1/-1}
+    .time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+    .time-slot{border:1px solid #cddde1;background:#fff;padding:11px;border-radius:12px;font-weight:800;color:var(--navy);cursor:pointer}.time-slot:hover,.time-slot.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .time-slot.unavailable{background:#f3f3f3;color:#aaa;text-decoration:line-through;cursor:not-allowed}
+    .booking-nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px}.booking-nav .btn{min-width:120px;text-align:center}
+    .summary{background:var(--sand);padding:22px;border-radius:18px}.summary-row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid rgba(18,59,74,.1);padding:10px 0}.summary-row:last-child{border-bottom:0}
+    .success-box{text-align:center;padding:24px}.success-icon{font-size:4rem}.confirmation-code{display:inline-block;background:var(--sky);color:var(--navy);font-weight:900;padding:10px 16px;border-radius:999px;margin:10px}
+    .admin-note{max-width:980px;margin:18px auto 0;padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.65);font-size:.85rem;color:var(--muted);text-align:center}
+    @media(max-width:800px){.service-picker{grid-template-columns:1fr}.booking-grid{grid-template-columns:1fr}.full{grid-column:auto}.time-grid{grid-template-columns:repeat(2,1fr)}.booking-panel{padding:22px 18px}.booking-step{font-size:.7rem;padding:12px 5px}}
+    @media(max-width:800px){
+      nav{display:none;position:absolute;left:0;right:0;top:70px;background:var(--cream);padding:20px;flex-direction:column;border-bottom:1px solid #ddd}
+      nav.open{display:flex}.menu{display:block}
+      .nav>.btn{display:none}
+      .hero{min-height:600px;background:linear-gradient(90deg,rgba(255,253,248,.98),rgba(255,253,248,.78)),linear-gradient(135deg,#e9f7f7,#b7dfe7)}
+      .cards,.pricing,.about,.contact-grid,.footer-grid{grid-template-columns:1fr}
+      .photo{min-height:300px}
+      section{padding:65px 0}
+      .area{padding:40px 25px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Serving families along the beach • Swim Lessons • Babysitting • Vacation Childcare</div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        Andey’s Beachside<br>Babysitting & Swim
+        <span>Beach days made easier.</span>
+      </a>
+      <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+      <nav id="nav">
+        <a href="#home">Home</a>
+        <a href="#swim">Swim Lessons</a>
+        <a href="#babysitting">Babysitting</a>
+        <a href="#about">About Andey</a>
+        <a href="#area">Service Area</a>
+      </nav>
+      <a class="btn" href="#book">Book Now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div class="eyebrow">Coastal care for little ones</div>
+        <h1>Beach days made easier.</h1>
+        <p>
+          Trusted babysitting, private swim lessons, and vacation childcare designed
+          to help families relax, have fun, and make the most of their time by the water.
+        </p>
+        <div class="actions">
+          <a class="btn" href="#book">Book a Service</a>
+          <a class="btn secondary" href="#swim">Explore Swim Lessons</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="swim">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Make a splash</div>
+          <h2>Private Swim Lessons</h2>
+          <p>Personalized instruction in a comfortable setting, tailored to your child’s age and skill level.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🏊‍♀️</div>
+            <h3>Private Lessons</h3>
+            <p>One-on-one attention focused on water comfort, confidence, safety, and swimming skills.</p>
+            <ul>
+              <li>All ages and skill levels</li>
+              <li>Private instruction</li>
+              <li>Beginner through advanced</li>
+              <li>Flexible scheduling</li>
+            </ul>
+            <a class="btn" href="#book">Book a Swim Lesson</a>
+          </article>
+          <article class="card">
+            <div class="icon">👨‍👩‍👧‍👦</div>
+            <h3>Semi-Private Lessons</h3>
+            <p>A fun option for siblings, friends, or vacation groups who want to learn together.</p>
+            <ul>
+              <li>Great for siblings & friends</li>
+              <li>Small-group instruction</li>
+              <li>Skill-appropriate activities</li>
+              <li>Vacation-friendly scheduling</li>
+            </ul>
+            <a class="btn" href="#book">Ask About Semi-Private</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sand" id="babysitting">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Enjoy your time away</div>
+          <h2>Beachside Babysitting</h2>
+          <p>Reliable childcare for date nights, beach days, dinners, errands, and vacation downtime.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🧸</div>
+            <h3>Vacation Babysitting</h3>
+            <p>Need a few hours to yourself while you’re on vacation? Andey can provide attentive care at your home, vacation rental, or other approved location.</p>
+            <a class="btn secondary" href="#book">Request Babysitting</a>
+          </article>
+          <article class="card">
+            <div class="icon">🌴</div>
+            <h3>Flexible Childcare</h3>
+            <p>Great for date nights, dinners, beach time, events, or when parents simply need a little breathing room.</p>
+            <a class="btn secondary" href="#book">Check Availability</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Simple & transparent</div>
+          <h2>Services & Starting Prices</h2>
+          <p>These are placeholders for now. We can replace them with Andey’s exact pricing when you’re ready.</p>
+        </div>
+        <div class="pricing">
+          <div class="price">
+            <h3>Private Swim</h3>
+            <div class="amount">$—</div>
+            <p>Pricing to be added</p>
+            <a class="btn" href="#book">Book</a>
+          </div>
+          <div class="price">
+            <h3>Semi-Private</h3>
+            <div class="amount">$—</div>
+            <p>Pricing to be added</p>
+            <a class="btn" href="#book">Book</a>
+          </div>
+          <div class="price">
+            <h3>Babysitting</h3>
+            <div class="amount">$—</div>
+            <p>Hourly rate to be added</p>
+            <a class="btn" href="#book">Request</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sand" id="about">
+      <div class="container about">
+        <div class="photo" aria-label="Decorative beach illustration"></div>
+        <div>
+          <div class="eyebrow">Meet Andey</div>
+          <h2>Care that feels personal.</h2>
+          <p>
+            Andey’s Beachside Babysitting & Swim was created to give families a dependable,
+            friendly option for childcare and swim instruction while they enjoy the coast.
+          </p>
+          <p>
+            Whether your little one is learning to feel comfortable in the water or you’re
+            hoping for a few peaceful hours to enjoy your vacation, the goal is simple:
+            safe, caring, personalized service.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Family-focused</span>
+            <span class="pill">Beachside</span>
+            <span class="pill">Personalized</span>
+            <span class="pill">Vacation-friendly</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="area">
+      <div class="container">
+        <div class="area">
+          <div class="eyebrow" style="color:#aee1e9">Where we go</div>
+          <h2>Serving families along the coast</h2>
+          <p>
+            Swim lessons and babysitting can be available at your home, vacation rental,
+            pool, or another approved location within the service area.
+          </p>
+          <p><strong>Service area:</strong> 30A • South Walton • Northwest Florida Coast</p>
+          <a class="btn" href="#book">Check Your Location</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="book" id="book">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Online booking</div>
+          <h2>Plan Your Beachside Care</h2>
+          <p>Choose your service, date and preferred time, then send Andey the details needed to review your booking.</p>
+        </div>
+
+        <div class="booking-shell">
+          <div class="booking-progress">
+            <div class="booking-step active" data-progress="1">1. Service</div>
+            <div class="booking-step" data-progress="2">2. Schedule</div>
+            <div class="booking-step" data-progress="3">3. Details</div>
+            <div class="booking-step" data-progress="4">4. Review</div>
+          </div>
+          <form id="bookingForm" onsubmit="finishBooking(event)">
+            <div class="booking-panel">
+              <div class="booking-page active" data-page="1">
+                <div class="eyebrow">Step 1</div><h3>What can we help with?</h3>
+                <div class="service-picker">
+                  <button type="button" class="service-option" data-service="Private Swim Lesson"><span class="icon">🏊‍♀️</span><strong>Private Swim Lesson</strong><small>One-on-one instruction tailored to the swimmer.</small></button>
+                  <button type="button" class="service-option" data-service="Semi-Private Swim Lesson"><span class="icon">🌊</span><strong>Semi-Private Swim</strong><small>For siblings, friends, or a small vacation group.</small></button>
+                  <button type="button" class="service-option" data-service="Babysitting / Vacation Childcare"><span class="icon">🌴</span><strong>Babysitting</strong><small>Vacation childcare, date nights, events, and more.</small></button>
+                </div>
+                <input type="hidden" id="bookingService" required>
+                <div class="booking-nav"><span></span><button class="btn" type="button" onclick="nextBookingPage(2)">Choose Date →</button></div>
+              </div>
+
+              <div class="booking-page" data-page="2">
+                <div class="eyebrow">Step 2</div><h3>When would you like to book?</h3>
+                <div class="booking-grid">
+                  <div><label for="bookingDate">Date</label><input id="bookingDate" type="date" required></div>
+                  <div><label for="duration">Approximate duration</label><select id="duration" required><option value="">Select</option><option>30 minutes</option><option>1 hour</option><option>2 hours</option><option>3 hours</option><option>4 hours</option><option>5+ hours</option></select></div>
+                  <div class="full"><label>Preferred start time</label><div class="time-grid" id="timeGrid"></div><input type="hidden" id="bookingTime" required></div>
+                </div>
+                <p class="note">Times shown are requestable windows for this Phase 2 front-end. A real shared calendar/database connection is required before the site can guarantee live availability across devices.</p>
+                <div class="booking-nav"><button class="btn secondary" type="button" onclick="nextBookingPage(1)">← Back</button><button class="btn" type="button" onclick="nextBookingPage(3)">Your Details →</button></div>
+              </div>
+
+              <div class="booking-page" data-page="3">
+                <div class="eyebrow">Step 3</div><h3>Tell Andey about your family</h3>
+                <div class="booking-grid">
+                  <div><label for="parent2">Parent / Guardian</label><input id="parent2" required placeholder="Your name"></div>
+                  <div><label for="phone2">Phone</label><input id="phone2" type="tel" required placeholder="(555) 555-5555"></div>
+                  <div><label for="email2">Email</label><input id="email2" type="email" required placeholder="you@example.com"></div>
+                  <div><label for="children">Number of children / swimmers</label><input id="children" type="number" min="1" max="12" required value="1"></div>
+                  <div class="full"><label for="ages">Child / swimmer age(s)</label><input id="ages" required placeholder="Example: 3 and 6"></div>
+                  <div class="full"><label for="location">Service location</label><input id="location" required placeholder="Neighborhood, resort, vacation rental, or address"></div>
+                  <div class="full"><label for="experience">Swimming experience <span style="font-weight:400">(for swim bookings)</span></label><textarea id="experience" placeholder="Water comfort, current skills, goals, fears, etc."></textarea></div>
+                  <div class="full"><label for="special">Allergies, special instructions, or anything Andey should know</label><textarea id="special" placeholder="Share any important care or booking details here."></textarea></div>
+                  <div class="full"><label for="emergency">Emergency contact</label><input id="emergency" placeholder="Name and phone number"></div>
+                </div>
+                <div class="booking-nav"><button class="btn secondary" type="button" onclick="nextBookingPage(2)">← Back</button><button class="btn" type="button" onclick="showReview()">Review →</button></div>
+              </div>
+
+              <div class="booking-page" data-page="4">
+                <div class="eyebrow">Step 4</div><h3>Review your request</h3><div class="summary" id="bookingSummary"></div>
+                <p class="note" style="margin-top:16px">Submitting sends the booking into this browser's Phase 2 booking ledger and blocks that exact date/time here. It is a booking request until Andey confirms it.</p>
+                <div class="booking-nav"><button class="btn secondary" type="button" onclick="nextBookingPage(3)">← Edit</button><button class="btn" type="submit">Request Booking</button></div>
+              </div>
+
+              <div class="booking-page" data-page="5"><div class="success-box"><div class="success-icon">☀️🌊</div><div class="eyebrow">Request received</div><h3>You're on Andey's calendar!</h3><p>Your request has been saved on this device. Andey will still need to confirm the appointment before it is final.</p><div class="confirmation-code" id="confirmationCode"></div><br><button class="btn" type="button" onclick="resetBooking()">Book Another Service</button></div></div>
+            </div>
+          </form>
+        </div>
+        <div class="admin-note"><strong>Phase 2 foundation:</strong> this version includes the full customer booking flow, local conflict prevention, mobile scheduling, intake details, review, and confirmation. Phase 3 can connect this interface to a real database/calendar, email/SMS confirmations, Stripe deposits, and a private Andey admin dashboard.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>Andey’s Beachside Babysitting & Swim</h3>
+        <p>Swim lessons, babysitting, and vacation childcare for families enjoying the coast.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#swim">Swim Lessons</a>
+        <a href="#babysitting">Babysitting</a>
+        <a href="#about">About Andey</a>
+        <a href="#book">Book Now</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:hello@andeysbeachside.com">Email us</a>
+        <a href="#book">Booking Request</a>
+      </div>
+    </div>
+    <div class="container copyright">
+      © 2026 Andey’s Beachside Babysitting & Swim. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById('nav').classList.toggle('open');
+    }
+    document.querySelectorAll('#nav a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
+    });
+
+
+    const bookingState = {service:'', time:''};
+    const slots=['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
+    const bookingDate=document.getElementById('bookingDate');
+    bookingDate.min=new Date().toISOString().split('T')[0];
+
+    document.querySelectorAll('.service-option').forEach(btn=>btn.addEventListener('click',()=>{
+      document.querySelectorAll('.service-option').forEach(x=>x.classList.remove('selected'));
+      btn.classList.add('selected'); bookingState.service=btn.dataset.service; document.getElementById('bookingService').value=bookingState.service;
+    }));
+    bookingDate.addEventListener('change',renderTimes);
+
+    function getBookings(){try{return JSON.parse(localStorage.getItem('andeyBookings')||'[]')}catch(e){return []}}
+    function renderTimes(){
+      const grid=document.getElementById('timeGrid'); grid.innerHTML=''; bookingState.time=''; document.getElementById('bookingTime').value='';
+      const taken=getBookings().filter(b=>b.date===bookingDate.value).map(b=>b.time);
+      slots.forEach(t=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.className='time-slot'+(taken.includes(t)?' unavailable':'');
+        if(!taken.includes(t)) b.onclick=()=>{document.querySelectorAll('.time-slot').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');bookingState.time=t;document.getElementById('bookingTime').value=t};grid.appendChild(b)});
+    }
+    function validPage(page){
+      if(page===1 && !bookingState.service){alert('Please choose a service first.');return false}
+      if(page===2){if(!bookingDate.value){alert('Please choose a date.');return false}if(!bookingState.time){alert('Please choose a start time.');return false}if(!document.getElementById('duration').value){alert('Please choose an approximate duration.');return false}}
+      if(page===3){for(const id of ['parent2','phone2','email2','children','ages','location']){const el=document.getElementById(id);if(!el.checkValidity()){el.reportValidity();return false}}}
+      return true;
+    }
+    function nextBookingPage(page){const current=Number(document.querySelector('.booking-page.active').dataset.page);if(page>current && !validPage(current))return;showPage(page)}
+    function showPage(page){document.querySelectorAll('.booking-page').forEach(p=>p.classList.toggle('active',Number(p.dataset.page)===page));document.querySelectorAll('.booking-step').forEach(s=>{const n=Number(s.dataset.progress);s.classList.toggle('active',n===page);s.classList.toggle('done',n<page)});document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'})}
+    function val(id){return document.getElementById(id).value.trim()}
+    function showReview(){if(!validPage(3))return;const rows=[['Service',bookingState.service],['Date',new Date(bookingDate.value+'T12:00:00').toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric',year:'numeric'})],['Start time',bookingState.time],['Duration',val('duration')],['Parent / guardian',val('parent2')],['Phone',val('phone2')],['Email',val('email2')],['Children / swimmers',val('children')],['Age(s)',val('ages')],['Location',val('location')]];document.getElementById('bookingSummary').innerHTML=rows.map(r=>`<div class="summary-row"><strong>${r[0]}</strong><span>${escapeHTML(r[1])}</span></div>`).join('');showPage(4)}
+    function escapeHTML(v){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+    function finishBooking(e){e.preventDefault();const bookings=getBookings();if(bookings.some(b=>b.date===bookingDate.value&&b.time===bookingState.time)){alert('That time was just booked. Please select another time.');showPage(2);renderTimes();return}const code='ABS-'+Math.random().toString(36).slice(2,7).toUpperCase();bookings.push({code,service:bookingState.service,date:bookingDate.value,time:bookingState.time,duration:val('duration'),parent:val('parent2'),phone:val('phone2'),email:val('email2'),children:val('children'),ages:val('ages'),location:val('location'),experience:val('experience'),special:val('special'),emergency:val('emergency'),created:new Date().toISOString(),status:'Requested'});localStorage.setItem('andeyBookings',JSON.stringify(bookings));document.getElementById('confirmationCode').textContent='Request # '+code;showPage(5)}
+    function resetBooking(){document.getElementById('bookingForm').reset();bookingState.service='';bookingState.time='';document.querySelectorAll('.service-option,.time-slot').forEach(x=>x.classList.remove('selected'));showPage(1)}
+  </script>
+</body>
+</html>
