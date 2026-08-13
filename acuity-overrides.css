@@ -1,0 +1,140 @@
+
+/* Andey's Beachside — Acuity Integration v5.1 */
+
+.acuity-shell{
+  max-width:1040px;
+  margin:0 auto;
+  border-radius:34px;
+  overflow:hidden;
+  background:rgba(255,253,247,.96);
+  border:1px solid rgba(40,123,142,.14);
+  box-shadow:0 26px 70px rgba(18,59,74,.14);
+}
+
+.acuity-topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:22px 28px;
+  background:
+    linear-gradient(135deg,rgba(215,242,244,.95),rgba(255,247,215,.94) 55%,rgba(255,224,206,.88));
+  border-bottom:1px solid rgba(40,123,142,.10);
+}
+
+.acuity-topline > div{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.acuity-kicker{
+  font-size:.72rem;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  font-weight:900;
+  color:var(--blue);
+}
+
+.acuity-topline strong{
+  color:var(--navy);
+  font-family:Georgia,serif;
+  font-size:1.15rem;
+}
+
+.acuity-phone{
+  flex:0 0 auto;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(18,59,74,.10);
+  color:var(--navy);
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 6px 18px rgba(18,59,74,.07);
+}
+
+.acuity-phone:hover{
+  transform:translateY(-1px);
+}
+
+.acuity-frame-wrap{
+  position:relative;
+  background:#fff;
+  padding:8px 8px 0;
+}
+
+.acuity-frame-wrap iframe{
+  display:block;
+  width:100%;
+  min-height:800px;
+  border:0;
+  border-radius:22px;
+  background:#fff;
+}
+
+.acuity-policy-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  background:rgba(248,244,231,.84);
+  border-top:1px solid rgba(18,59,74,.08);
+}
+
+.acuity-policy-strip > div{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px;
+  align-items:start;
+  padding:18px 20px;
+}
+
+.acuity-policy-strip > div + div{
+  border-left:1px solid rgba(18,59,74,.08);
+}
+
+.acuity-policy-strip span{
+  font-size:1.25rem;
+}
+
+.acuity-policy-strip p{
+  margin:0;
+  font-size:.82rem;
+  line-height:1.55;
+  color:var(--muted);
+}
+
+.acuity-policy-strip strong{
+  display:block;
+  color:var(--navy);
+  margin-bottom:2px;
+}
+
+#book{
+  scroll-margin-top:125px;
+}
+
+@media(max-width:800px){
+  .acuity-shell{
+    border-radius:26px;
+  }
+  .acuity-topline{
+    flex-direction:column;
+    align-items:flex-start;
+    padding:19px 18px;
+  }
+  .acuity-phone{
+    width:100%;
+    text-align:center;
+  }
+  .acuity-frame-wrap{
+    padding:4px 2px 0;
+  }
+  .acuity-policy-strip{
+    grid-template-columns:1fr;
+  }
+  .acuity-policy-strip > div + div{
+    border-left:0;
+    border-top:1px solid rgba(18,59,74,.08);
+  }
+}
