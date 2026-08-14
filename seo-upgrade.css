@@ -142,3 +142,21 @@
   .seo-price-card{position:static}
   .service-page-hero::after{opacity:.5;transform:scale(.7) rotate(10deg)}
 }
+
+.skip-link{
+  position:absolute;
+  left:-9999px;
+  top:8px;
+  z-index:9999;
+  background:#fff;
+  color:#173847;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:900;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+.skip-link:focus{left:8px}
+:focus-visible{
+  outline:3px solid currentColor;
+  outline-offset:3px;
+}
