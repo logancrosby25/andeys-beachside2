@@ -1,0 +1,144 @@
+/* Andey's Beachside — SEO Expansion v6.4 */
+.service-actions{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:14px 18px;
+  margin-top:22px;
+}
+.seo-detail-link{
+  display:inline-block;
+  color:#355c69 !important;
+  font-weight:900;
+  text-decoration:underline;
+  text-decoration-thickness:1.5px;
+  text-underline-offset:4px;
+}
+.seo-detail-link:hover{color:#c97f76 !important}
+
+.service-page{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(246,221,176,.24),transparent 20%),
+    radial-gradient(circle at 88% 13%,rgba(185,228,234,.28),transparent 22%),
+    linear-gradient(180deg,#f5fcfd,#fffdfa 32%,#fff7f1 62%,#f1fbfc);
+}
+.service-page-header{
+  background:rgba(255,253,250,.95);
+  border-bottom:1px solid rgba(76,119,132,.13);
+  position:sticky;
+  top:0;
+  z-index:30;
+  backdrop-filter:blur(12px);
+}
+.service-page-nav{
+  width:min(1120px,92%);
+  margin:auto;
+  padding:12px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.service-page-logo{width:min(185px,42vw);height:auto;display:block}
+.service-page-navlinks{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.service-page-navlinks a{
+  color:#2f5262;
+  font-weight:800;
+  text-decoration:none;
+}
+.service-page-hero{
+  padding:84px 0 62px;
+  position:relative;
+  overflow:hidden;
+}
+.service-page-hero::after{
+  content:"";
+  position:absolute;
+  width:330px;
+  height:160px;
+  right:-45px;
+  top:80px;
+  border-radius:999px;
+  background:linear-gradient(135deg,rgba(249,212,197,.62),rgba(246,221,176,.44));
+  transform:rotate(10deg);
+  z-index:0;
+}
+.service-page-wrap{width:min(1040px,92%);margin:auto;position:relative;z-index:1}
+.breadcrumbs{font-size:.82rem;color:#536d76;margin-bottom:22px}
+.breadcrumbs a{color:#487f8e;font-weight:800}
+.service-page-hero h1{
+  font-family:Georgia,serif;
+  font-size:clamp(2.6rem,7vw,5rem);
+  line-height:1.02;
+  margin:0 0 18px;
+  max-width:900px;
+  color:#294b5b;
+}
+.service-page-hero h1 span{color:#e7a297}
+.service-page-lead{max-width:760px;font-size:1.12rem;color:#3e5e68}
+.service-page-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.service-page-main{padding-bottom:80px}
+.seo-content-grid{
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  gap:28px;
+  align-items:start;
+}
+.seo-panel{
+  background:rgba(255,255,255,.78);
+  border:1.5px solid rgba(76,119,132,.18);
+  border-radius:28px;
+  padding:clamp(24px,4vw,42px);
+  box-shadow:0 16px 42px rgba(49,75,88,.07);
+  margin-bottom:26px;
+}
+.seo-panel h2{
+  font-family:Georgia,serif;
+  color:#294b5b;
+  font-size:clamp(1.75rem,4vw,2.55rem);
+  margin:0 0 14px;
+}
+.seo-panel h3{color:#2f5262;margin-top:26px}
+.seo-panel p,.seo-panel li{color:#3f5d67}
+.seo-panel ul{padding-left:20px}
+.seo-highlight{background:linear-gradient(145deg,rgba(238,249,251,.95),rgba(255,247,240,.92))}
+.seo-price-card{
+  position:sticky;
+  top:105px;
+  background:linear-gradient(145deg,#f5fbfc,#fff8ef);
+}
+.seo-price-card .big-rate{
+  font-family:Georgia,serif;
+  font-size:2rem;
+  color:#294b5b;
+  margin:8px 0;
+}
+.seo-faq details{border-top:1px solid rgba(76,119,132,.15);padding:15px 0}
+.seo-faq details:first-of-type{border-top:0}
+.seo-faq summary{cursor:pointer;font-weight:900;color:#31515e}
+.seo-crosslink{
+  border:1.5px solid rgba(239,178,168,.22);
+  background:linear-gradient(135deg,#fff7f1,#eef9fb);
+}
+.service-page-footer{
+  background:linear-gradient(180deg,#4f6c79,#3f5a67);
+  color:#fff;
+  padding:42px 0;
+  text-align:center;
+}
+.service-page-footer p{color:#eef7f8 !important}
+.service-page-footer a{color:#fff !important;font-weight:800;margin:0 8px}
+@media(max-width:800px){
+  .service-page-navlinks a:not(.btn){display:none}
+  .service-page-hero{padding:60px 0 44px}
+  .seo-content-grid{grid-template-columns:1fr}
+  .seo-price-card{position:static}
+  .service-page-hero::after{opacity:.5;transform:scale(.7) rotate(10deg)}
+}
