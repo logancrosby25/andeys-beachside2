@@ -1,0 +1,51 @@
+/* Andey's Beachside — Moving Banner Fix v6.2
+   Restores the marquee even when the global reduced-motion rule is active.
+   Only the decorative ticker is overridden.
+*/
+
+.ticker{
+  overflow:hidden !important;
+  white-space:nowrap !important;
+}
+
+.ticker .ticker-track{
+  display:flex !important;
+  width:max-content !important;
+  animation:ticker-scroll 26s linear infinite !important;
+  animation-duration:26s !important;
+  animation-iteration-count:infinite !important;
+  will-change:transform;
+}
+
+.ticker .ticker-track span{
+  display:block;
+  flex:none;
+  padding-right:3rem;
+}
+
+/* Exactly one copy's width per loop = seamless repeating motion. */
+@keyframes ticker-scroll{
+  from{
+    transform:translate3d(0,0,0);
+  }
+  to{
+    transform:translate3d(-50%,0,0);
+  }
+}
+
+/* Keep this banner moving even if a browser/device has Reduce Motion enabled.
+   Other site animations can still respect the accessibility preference. */
+@media (prefers-reduced-motion: reduce){
+  .ticker .ticker-track{
+    animation:ticker-scroll 26s linear infinite !important;
+    animation-duration:26s !important;
+    animation-iteration-count:infinite !important;
+  }
+}
+
+/* Slightly slower on phones for easier reading. */
+@media(max-width:800px){
+  .ticker .ticker-track{
+    animation-duration:30s !important;
+  }
+}
