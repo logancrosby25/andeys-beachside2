@@ -1,0 +1,54 @@
+ANDEY'S BEACHSIDE — COMPLETE PRODUCTION AUDIT v6.5
+Date: 2026-08-14
+
+SUMMARY
+This audit focuses on the current v6.4 SEO-upgraded site and preserves the existing Acuity, Supabase, admin, pricing, and visual setup.
+
+UPGRADES ADDED
+- Added WebSite structured data to the homepage to strengthen the preferred site-name signal for Google.
+- Added explicit homepage canonical and robots metadata if absent.
+- Added keyboard-accessible skip links and visible focus treatment.
+- Added conservative Vercel response security headers in vercel.json.
+- Added/standardized robots.txt with sitemap reference and admin/manage crawl exclusions.
+- Preserved the dedicated 30A Babysitting and 30A Private Swim Lessons SEO pages.
+- Preserved current babysitting pricing and swim no-show policy.
+- Preserved Acuity owner 40133687, Supabase site-contact forms, and moving ticker dependency.
+
+AUDIT RESULTS
+[PASS] Homepage title present
+[PASS] Homepage canonical present
+[PASS] Homepage meta description present
+[PASS] Homepage robots meta present
+[PASS] Homepage WebSite structured data present
+[PASS] Homepage still has Acuity owner id
+[PASS] Homepage still has site-contact endpoint
+[PASS] Homepage still has moving ticker CSS
+[PASS] Homepage links to babysitting SEO page
+[PASS] Homepage links to swim SEO page
+[PASS] Babysitting page canonical
+[PASS] Swim page canonical
+[PASS] Babysitting pricing rule current
+[PASS] Swim no-show rule current
+[PASS] Sitemap includes homepage
+[PASS] Sitemap includes babysitting page
+[PASS] Sitemap includes swim page
+[PASS] robots.txt present
+[PASS] vercel.json security headers present
+[PASS] Skip link present homepage
+[PASS] Skip link present service pages
+[PASS] No duplicate homepage IDs
+[PASS] No broken new-package homepage refs
+
+NOT CHANGED ON PURPOSE
+- No CSP header was added because the site relies on third-party scripts/embeds (Acuity/Supabase-related behavior). A careless CSP could break booking.
+- No fake reviews, fake location pages, or doorway pages were added.
+- No claims of guaranteed Google rankings were added.
+- No admin or booking functionality was removed.
+
+LIVE CHECKS STILL WORTH DOING AFTER DEPLOY
+- Open the homepage, babysitting SEO page, and swim SEO page on desktop and phone.
+- Test the Acuity booking iframe end-to-end.
+- Submit one Questions form test and one Refund Request test.
+- Confirm the moving banner still scrolls.
+- In Search Console, inspect the two new SEO URLs and request indexing once each.
+- Check Vercel Analytics after enabling tracking if desired.
